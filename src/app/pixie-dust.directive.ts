@@ -123,14 +123,14 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
       this.behavior.move(),
     ];
 
-    let size = 3.25;
-    let force = 0.7;
-    var lifeMin = 0;
-    let progress =
+    const size = 3.25;
+    const force = 0.7;
+    const lifeMin = 0;
+    const progress =
       Math.min(this.field.width, this.caret.offsetWidth) / this.field.width;
-    let offset = this.field.left + this.field.width * progress;
-    let rangeMin = Math.max(this.field.left, offset - 30);
-    let rangeMax = Math.min(this.field.right, offset + 10);
+    const offset = this.field.left + this.field.width * progress;
+    const rangeMin = Math.max(this.field.left, offset - 30);
+    const rangeMax = Math.min(this.field.right, offset + 10);
 
     const sprayCount: number = Math.ceil(
       this.field.width / Math.min(this.field.width, this.caret.offsetWidth)
