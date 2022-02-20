@@ -26,29 +26,29 @@ export class Vector {
     return new Vector(a.x - b.x, a.y - b.y);
   }
 
-  public static random(range): Vector {
+  public static random(range: number): Vector {
     const v: Vector = new Vector();
     v.randomize(range);
     return v;
   }
 
-  public static distanceSquared(a, b) {
+  public static distanceSquared(a: Vector, b: Vector): number {
     var dx = a.x - b.x;
     var dy = a.y - b.y;
     return dx * dx + dy * dy;
   }
 
-  public static distance(a, b) {
+  public static distance(a: Vector, b: Vector): number {
     var dx = a.x - b.x;
     var dy = a.y - b.y;
     return Math.sqrt(dx * dx + dy * dy);
   }
 
-  public get x() {
+  public get x(): number {
     return this._x;
   }
 
-  public get y() {
+  public get y(): number {
     return this._y;
   }
 
