@@ -1,5 +1,5 @@
 import { Directive, OnChanges, AfterViewInit, ElementRef } from '@angular/core';
-import { Particle } from './models/particle.modle';
+import { Particle } from './models/particle.model';
 import { Vector } from './models/vector.model';
 
 @Directive({
