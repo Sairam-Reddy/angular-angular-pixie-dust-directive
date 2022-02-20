@@ -143,20 +143,30 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
     let rangeMin = Math.max(this.field.left, offset - 30);
     let rangeMax = Math.min(this.field.right, offset + 10);
 
-    this.spray(intensity, () => {
-      return [
-        null,
-        null,
-        Vector.create(
-          this.getRandomBetween(rangeMin + 10, rangeMax - 20),
-          this.getRandomBetween(this.field.top + 15, this.field.bottom - 15)
-        ),
-        Vector.random(force),
-        size + Math.random(),
-        this.getRandomBetween(lifeMin, 0),
-        behavior,
-      ];
-    });
+    const count: number = Math.ceil(
+      this.field.width / Math.min(this.field.width, this.caret.offsetWidth)
+    );
+
+    for (let i = 0; i < count; i++) {
+      const offsetPart = this.field.left + this.field.width * progress * i;
+      const offsetrangeMin = Math.max(this.field.left, offsetPart - 30);
+      const offsetrangeMax = Math.min(this.field.right, offsetPart + 10);
+
+      this.spray(intensity, () => {
+        return [
+          null,
+          null,
+          Vector.create(
+            this.getRandomBetween(offsetrangeMin + 10, offsetrangeMax - 20),
+            this.getRandomBetween(this.field.top + 15, this.field.bottom - 15)
+          ),
+          Vector.random(force),
+          size + Math.random(),
+          this.getRandomBetween(lifeMin, 0),
+          behavior,
+        ];
+      });
+    }
 
     // top edge
     this.spray(intensity * 0.5, () => {
