@@ -6,15 +6,15 @@ export const PI_180 = Math.PI / 180;
  */
 
 export class Vector {
-  private _x;
-  private _y;
+  private _x: number;
+  private _y: number;
 
   public constructor(x: number = 0, y: number = 0) {
     this._x = x;
     this._y = y;
   }
 
-  public static create(x, y) {
+  public static create(x: number, y: number) {
     return new Vector(x, y);
   }
 

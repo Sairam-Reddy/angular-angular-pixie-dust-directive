@@ -444,9 +444,9 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
       },
       eat: (food = []) => {
         return (particle) => {
-          var i = 0;
-          var l = this.particles.length;
-          var prey;
+          let i: number = 0;
+          const l: number = this.particles.length;
+          let prey: Particle;
 
           for (; i < l; i++) {
             prey = this.particles[i];
@@ -469,7 +469,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
         };
       },
       force: (x, y) => {
-        return (particle) => {
+        return (particle: Particle) => {
           particle.velocity.x += x;
           particle.velocity.y += y;
         };
