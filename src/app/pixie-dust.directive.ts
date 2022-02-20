@@ -479,19 +479,17 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
           particle.velocity.limit(treshold);
         };
       },
-      attract: (forceMultiplier, groups) => {
-        forceMultiplier = forceMultiplier || 1;
-        groups = groups || [];
+      attract: (forceMultiplier = 1, groups = []) => {
         return (particle) => {
           // attract other particles
-          var totalForce = new Vector(0, 0);
-          var force = new Vector(0, 0);
-          var i = 0;
-          var l = this.particles.length;
-          var distance;
-          var pull;
-          var attractor;
-          var grouping = groups.length;
+          const totalForce: Vector = new Vector(0, 0);
+          const force: Vector = new Vector(0, 0);
+          let i: number = 0;
+          const l: number = this.particles.length;
+          let distance;
+          let pull;
+          let attractor;
+          const grouping = groups.length;
 
           for (; i < l; i++) {
             attractor = this.particles[i];
@@ -524,8 +522,8 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
       wrap: (margin) => {
         return (particle) => {
           // move around when particle reaches edge of screen
-          var position = particle.position;
-          var radius = particle.size * 0.5;
+          const position = particle.position;
+          const radius = particle.size * 0.5;
 
           if (position.x + radius > this.canvas.width + margin) {
             position.x = radius;
@@ -547,9 +545,9 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
       reflect: () => {
         return (particle) => {
           // bounce from edges
-          var position = particle.position;
-          var velocity = particle.velocity;
-          var radius = particle.size * 0.5;
+          const position = particle.position;
+          const velocity = particle.velocity;
+          const radius = particle.size * 0.5;
 
           if (position.x + radius > this.canvas.width) {
             velocity.x = -velocity.x;
