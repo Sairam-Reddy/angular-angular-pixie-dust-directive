@@ -31,7 +31,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
   public ngOnChanges(): void {}
 
   public ngAfterViewInit(): void {
-    this.input = document.querySelector('input');
+    this.input = this.element.nativeElement;
     this.caret = document.createElement('span');
     this.caret.style.position = 'absolute';
     this.caret.style.left = 0;
