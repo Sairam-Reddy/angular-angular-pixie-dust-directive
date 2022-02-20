@@ -56,6 +56,10 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
     // Resize
     this.resizeObserver = new ResizeObserver(() => {
       this.reposition();
+      // correct canvas size on window resize
+      if (this.canvas) {
+        this.fitCanvas();
+      }
     });
     this.resizeObserver.observe(this.element.nativeElement);
 
@@ -265,7 +269,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
     this.setup(dimensions, options);
   }
 
-  // resizes canvas to fit window dimensions
+  // resizes canvas to fit element dimensions
   private fitCanvas() {
     this.canvas.width = this.element.nativeElement.offsetWidth;
     this.canvas.height = this.element.nativeElement.offsetHeight;
@@ -276,9 +280,6 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
     // create
     this.canvas = document.createElement('canvas');
     this.element.nativeElement.appendChild(this.canvas);
-
-    // correct canvas size on window resize
-    window.addEventListener('resize', this.fitCanvas.bind(this));
 
     // go
     this.go(dimensions, options);
