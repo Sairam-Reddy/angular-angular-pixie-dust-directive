@@ -191,24 +191,6 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
       ];
     });
 
-    // left edge
-    // if (this.input.value.length === 1) {
-    //   this.spray(intensity * 2, () => {
-    //     return [
-    //       null,
-    //       null,
-    //       Vector.create(
-    //         this.field.left + Math.random() * 20,
-    //         this.getRandomBetween(this.field.top, this.field.bottom)
-    //       ),
-    //       Vector.random(force),
-    //       size + Math.random(),
-    //       this.getRandomBetween(lifeMin, 0),
-    //       behavior,
-    //     ];
-    //   });
-    // }
-
     // right edge
     if (rangeMax === this.field.right) {
       this.spray(intensity * 2, () => {
@@ -273,14 +255,6 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
     if (!options.action) {
       options.action = () => {};
     }
-
-    // if (document.readyState === 'interactive') {
-    //   this.setup(dimensions, options);
-    // } else {
-    //   document.addEventListener('DOMContentLoaded', () => {
-    //     this.setup(dimensions, options);
-    //   });
-    // }
 
     this.setup(dimensions, options);
   }
