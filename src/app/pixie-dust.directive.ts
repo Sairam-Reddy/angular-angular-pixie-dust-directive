@@ -570,9 +570,9 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
       },
       edge: (action) => {
         return (particle) => {
-          var position = particle.position;
-          var velocity = particle.velocity;
-          var radius = particle.size * 0.5;
+          const position = particle.position;
+          const velocity = particle.velocity;
+          const radius = particle.size * 0.5;
 
           if (position.x + radius > this.canvas.width) {
             action(particle);
