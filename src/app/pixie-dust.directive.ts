@@ -32,10 +32,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
   public ngOnChanges(): void {
     // start listening to events
     if (this.options) {
-      var self = this;
-      document.addEventListener('keyup', (e) => {
-        this.options.action(self, e);
-      });
+      this.options.action();
     }
   }
 
@@ -96,11 +93,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
       afterPaint: () => {
         // nothing
       },
-      action: (e) => {
-        if (!this.spawnsCharacter(e.keyCode)) {
-          return;
-        }
-
+      action: () => {
         this.caret.textContent = this.input.value;
 
         this.burst(12);
