@@ -3,7 +3,7 @@ import { Particle } from './models/particle.modle';
 import { Vector } from './models/vector.model';
 
 @Directive({
-  selector: '[appAccordion]',
+  selector: '[appPixieDust]',
 })
 export class PixieDustDirective implements OnChanges, AfterViewInit {
   public MAX_LIFE = 50;
