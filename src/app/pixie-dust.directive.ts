@@ -17,7 +17,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
   public MAX_LIFE: number = 50;
   public canvas: HTMLCanvasElement;
   public inputElement: HTMLElement;
-  public field;
+  public field: DOMRect;
   public caret;
 
   private particles: Array<Particle> = [];
