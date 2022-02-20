@@ -9,7 +9,7 @@ import { Particle } from './models/particle.model';
 import { Vector } from './models/vector.model';
 
 @Directive({
-  selector: '[appPixieDust]'
+  selector: '[appPixieDust]',
 })
 export class PixieDustDirective implements OnChanges, AfterViewInit {
   // input to the directive
@@ -279,6 +279,13 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
   private setup(dimensions, options) {
     // create
     this.canvas = document.createElement('canvas');
+    this.canvas.style.position = 'absolute';
+    this.canvas.style.left = '0';
+    this.canvas.style.right = '0';
+    this.canvas.style.top = '0';
+    this.canvas.style.bottom = '0';
+    this.canvas.style.pointerEvents = 'none';
+
     this.element.nativeElement.appendChild(this.canvas);
 
     // go
