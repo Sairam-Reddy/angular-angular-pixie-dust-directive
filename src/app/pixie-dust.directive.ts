@@ -45,7 +45,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
     window.onresize = this.reposition.bind(this);
     this.reposition();
 
-    this.testSimulate();
+    this.startSimulation();
   }
 
   public reposition() {
@@ -160,7 +160,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
     }
   }
 
-  private testSimulate() {
+  private startSimulation() {
     // start particle simulation
     this.simulate('2d', {
       init: () => {},
