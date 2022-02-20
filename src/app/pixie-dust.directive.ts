@@ -12,6 +12,8 @@ import { Vector } from './models/vector.model';
   selector: '[appPixieDust]',
 })
 export class PixieDustDirective implements OnChanges, AfterViewInit {
+  // input to the directive 
+  // on change of the value, burst mode is activated
   @Input() value;
 
   public MAX_LIFE: number = 50;
