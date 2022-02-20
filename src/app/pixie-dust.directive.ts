@@ -38,7 +38,6 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
   public constructor(private element: ElementRef) {}
 
   public ngOnChanges(): void {
-    // start listening to events
     if (this.options) {
       this.options.action();
     }
