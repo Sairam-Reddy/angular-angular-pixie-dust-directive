@@ -14,7 +14,7 @@ import { Vector } from './models/vector.model';
 export class PixieDustDirective implements OnChanges, AfterViewInit {
   @Input() value;
 
-  public MAX_LIFE = 50;
+  public MAX_LIFE: number = 50;
   public canvas;
   public inputElement;
   public field;
@@ -28,7 +28,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
   private paint: any;
   private update: any;
   private stage: any = () => {};
-  private options;
+  private options: any;
 
   public constructor(private element: ElementRef) {}
 
