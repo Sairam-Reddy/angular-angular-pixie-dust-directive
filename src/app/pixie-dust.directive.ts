@@ -20,11 +20,6 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
   public field;
   public caret;
 
-  private keys = [
-    8, 9, 13, 16, 17, 18, 27, 32, 33, 34, 35, 36, 37, 38, 39, 40, 46, 91, 93,
-    112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123,
-  ];
-
   private particles = [];
   private destroyed = [];
 
@@ -117,10 +112,6 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
 
   public reposition() {
     this.field = this.input.getBoundingClientRect();
-  }
-
-  public spawnsCharacter(keyCode) {
-    return this.keys.indexOf(keyCode) === -1;
   }
 
   private getRandomBetween(min, max) {
