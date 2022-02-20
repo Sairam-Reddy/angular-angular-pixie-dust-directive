@@ -112,7 +112,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
     this.field = this.inputElement.getBoundingClientRect();
   }
 
-  private getRandomBetween(min, max) {
+  private getRandomBetween(min: number, max: number): number {
     return min + Math.random() * (max - min);
   }
 
