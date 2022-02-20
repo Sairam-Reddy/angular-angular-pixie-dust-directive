@@ -5,19 +5,19 @@
 import { Vector } from './vector.model';
 
 export class Particle {
-  private _id;
-  private _group;
-  private _position;
-  private _velocity;
-  private _size;
-  private _life;
+  private _id: string;
+  private _group: string;
+  private _position: Vector;
+  private _velocity: Vector;
+  private _size: number;
+  private _life: number;
   private _behavior;
 
   public constructor(
     id = 'default',
     group = 'default',
-    position = new Vector(),
-    velocity = new Vector(),
+    position: Vector = new Vector(),
+    velocity: Vector = new Vector(),
     size = 1,
     life = 0,
     behavior = []
