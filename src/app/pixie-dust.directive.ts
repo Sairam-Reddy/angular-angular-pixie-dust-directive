@@ -51,6 +51,14 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
     this.caret.style.margin = '0';
     this.caret.style.width = 'auto';
     this.caret.style.visibility = 'hidden';
+    this.caret.style.border = '2px solid rgba(255, 255, 255, 0.5)';
+    this.caret.style.fontSize = '1.75em';
+    this.caret.style.padding = '0.25em 0.5em 0.3125em';
+    this.caret.style.color = 'rgba(255, 255, 255, 0.5)';
+    this.caret.style.borderRadius = '0.25em';
+    this.caret.style.background = 'transparent';
+    this.caret.style.transition = 'all 0.1s';
+
     this.element.nativeElement.appendChild(this.caret);
 
     // Resize
