@@ -304,10 +304,10 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
         range = Math.pow(range, 2);
 
         return (particle) => {
-          var center = new Vector();
-          var i = 0;
-          var l = this.particles.length;
-          var count = 0;
+          const center = new Vector();
+          let i = 0;
+          const l = this.particles.length;
+          let count = 0;
 
           if (l <= 1) {
             return;
@@ -347,11 +347,11 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
         distance = Math.pow(distance, 2);
 
         return (particle) => {
-          var heading = new Vector();
-          var i = 0;
-          var l = this.particles.length;
-          var count = 0;
-          var diff;
+          const heading: Vector = new Vector();
+          let i = 0;
+          const l = this.particles.length;
+          let count = 0;
+          let diff;
 
           if (l <= 1) {
             return;
