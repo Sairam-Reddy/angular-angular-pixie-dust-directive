@@ -15,15 +15,15 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
   @Input() value;
 
   public MAX_LIFE: number = 50;
-  public canvas;
-  public inputElement;
+  public canvas: HTMLCanvasElement;
+  public inputElement: HTMLElement;
   public field;
   public caret;
 
   private particles: Array<Particle> = [];
   private destroyed: Array<Particle> = [];
 
-  private context;
+  private context: CanvasRenderingContext2D;
   private behavior: any;
   private paint: any;
   private update: any;
