@@ -60,80 +60,80 @@ export class Vector {
     this._y = value;
   }
 
-  public get magnitudeSquared() {
+  public get magnitudeSquared(): number {
     return this._x * this._x + this._y * this._y;
   }
 
-  public get magnitude() {
+  public get magnitude(): number {
     return Math.sqrt(this.magnitudeSquared);
   }
 
-  public get angle() {
+  public get angle(): number {
     return (Math.atan2(this._y, this._x) * 180) / Math.PI;
   }
 
-  public clone() {
+  public clone(): Vector {
     return new Vector(this._x, this._y);
   }
 
-  public add(v) {
+  public add(v: Vector): void {
     this._x += v.x;
     this._y += v.y;
   }
 
-  public subtract(v) {
+  public subtract(v: Vector): void {
     this._x -= v.x;
     this._y -= v.y;
   }
 
-  public multiply(value) {
+  public multiply(value: number): void {
     this._x *= value;
     this._y *= value;
   }
 
-  public divide(value) {
+  public divide(value: number): void {
     this._x /= value;
     this._y /= value;
   }
 
-  public normalize() {
+  public normalize(): void {
     var magnitude = this.magnitude;
     if (magnitude > 0) {
       this.divide(magnitude);
     }
   }
 
-  public limit(treshold) {
+  public limit(treshold: number): void {
     if (this.magnitude > treshold) {
       this.normalize();
       this.multiply(treshold);
     }
   }
 
-  public randomize(amount = 1) {
+  public randomize(amount: number = 1): void {
     this._x = amount * 2 * (-0.5 + Math.random());
     this._y = amount * 2 * (-0.5 + Math.random());
   }
 
-  public rotate(degrees) {
-    var magnitude = this.magnitude;
-    var angle = (Math.atan2(this._x, this._y) * PI_2 + degrees) * PI_180;
+  public rotate(degrees: number): void {
+    const magnitude = this.magnitude;
+    const angle = (Math.atan2(this._x, this._y) * PI_2 + degrees) * PI_180;
     this._x = magnitude * Math.cos(angle);
     this._y = magnitude * Math.sin(angle);
   }
 
-  public flip() {
-    var temp = this._y;
+  public flip(): void {
+    const temp = this._y;
     this._y = this._x;
     this._x = temp;
   }
 
-  public invert() {
+  public invert(): void {
     this._x = -this._x;
     this._y = -this._y;
   }
 
-  public toString() {
+  public toString(): string {
     return this._x + ', ' + this._y;
   }
 }
