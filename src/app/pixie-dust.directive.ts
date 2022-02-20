@@ -147,7 +147,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
       this.field.width / Math.min(this.field.width, this.caret.offsetWidth)
     );
 
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i <= count; i++) {
       const offsetPart = this.field.left + this.field.width * progress * i;
       const offsetrangeMin = Math.max(this.field.left, offsetPart - 30);
       const offsetrangeMax = Math.min(this.field.right, offsetPart + 10);
