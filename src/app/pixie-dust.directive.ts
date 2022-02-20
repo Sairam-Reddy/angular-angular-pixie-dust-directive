@@ -55,7 +55,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
 
     this.options = {
       init: () => {},
-      tick: (particles) => {
+      tick: (particles: Array<Particle>) => {
         if (!particles) {
           return;
         }
@@ -69,7 +69,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
       beforePaint: () => {
         this.clear();
       },
-      paint: (particle) => {
+      paint: (particle: Particle) => {
         const p = particle.position;
         const s = particle.size;
         const o = 1 - particle.life / this.MAX_LIFE;
