@@ -9,6 +9,6 @@ export class AppComponent {
   public counter: number = 1000;
 
   public increment(): void {
-    this.counter = this.counter + 500;
+    this.counter = this.counter + 10000;
   }
 }
