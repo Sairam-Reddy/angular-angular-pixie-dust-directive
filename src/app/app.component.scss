@@ -4,6 +4,11 @@
   color: white;
   padding: 5px;
   margin-right: 100px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  font-size: 1.75em;
+  border-radius: 0.25em;
+  transition: all 0.1s;
+  font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
 }
 
 ::ng-deep {
@@ -11,26 +16,5 @@
   body {
     height: 100%;
     overflow: hidden;
-  }
-
-  .placeholder {
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    font-size: 1.75em;
-    padding: 0.25em 0.5em 0.3125em;
-    color: rgba(255, 255, 255, 0.5);
-    border-radius: 0.25em;
-    background: transparent;
-    transition: all 0.1s;
-
-    // &.keyup {
-    //   color: white;
-    //   border-color: white;
-    //   text-shadow: 0 0 0.125em white;
-    //   box-shadow: 0 0 0.25em white, inset 0 0 0.25em white;
-    // }
-  }
-
-  .placeholder {
-    font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
   }
 }

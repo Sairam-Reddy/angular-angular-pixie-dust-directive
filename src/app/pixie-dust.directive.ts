@@ -118,6 +118,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
       action: () => {
         this.burst(12);
 
+        // can be used for inputs
         this.inputElement.classList.add('keyup');
         setTimeout(() => {
           this.inputElement.classList.remove('keyup');
