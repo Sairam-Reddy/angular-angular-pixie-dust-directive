@@ -1,4 +1,10 @@
-import { Directive, OnChanges, AfterViewInit, ElementRef } from '@angular/core';
+import {
+  Directive,
+  OnChanges,
+  AfterViewInit,
+  ElementRef,
+  Input,
+} from '@angular/core';
 import { Particle } from './models/particle.model';
 import { Vector } from './models/vector.model';
 
@@ -6,6 +12,8 @@ import { Vector } from './models/vector.model';
   selector: '[appPixieDust]',
 })
 export class PixieDustDirective implements OnChanges, AfterViewInit {
+  @Input() value;
+
   public MAX_LIFE = 50;
   public canvas;
   public input;
