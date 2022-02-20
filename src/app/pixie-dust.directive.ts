@@ -603,9 +603,9 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
   // simulation update loop
   private act(options) {
     // update particle states
-    var i = 0;
-    var l = this.particles.length;
-    var p;
+    let i = 0;
+    let l = this.particles.length;
+    let p: Particle;
     for (; i < l; i++) {
       this.particles[i].update(this.stage);
     }
