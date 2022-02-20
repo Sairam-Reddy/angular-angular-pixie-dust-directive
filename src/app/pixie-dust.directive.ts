@@ -20,8 +20,8 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
   public field;
   public caret;
 
-  private particles = [];
-  private destroyed = [];
+  private particles: Array<Particle> = [];
+  private destroyed: Array<Particle> = [];
 
   private context;
   private behavior: any;
@@ -607,7 +607,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
     var l = this.particles.length;
     var p;
     for (; i < l; i++) {
-      this.particles[i].update();
+      this.particles[i].update(this.stage);
     }
 
     // clean destroyed particles
@@ -657,7 +657,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
     });
   }
 
-  private destroy(particle) {
+  private destroy(particle: Particle) {
     this.destroyed.push(particle);
   }
 
