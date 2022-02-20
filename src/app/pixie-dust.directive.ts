@@ -12,7 +12,7 @@ import { Vector } from './models/vector.model';
   selector: '[appPixieDust]',
 })
 export class PixieDustDirective implements OnChanges, AfterViewInit {
-  // input to the directive 
+  // input to the directive
   // on change of the value, burst mode is activated
   @Input() value;
 
@@ -31,6 +31,8 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
   private update: any;
   private stage: any = () => {};
   private options: any;
+
+  private resizeObserver;
 
   public constructor(private element: ElementRef) {}
 
@@ -51,8 +53,12 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
     this.caret.style.visibility = 'hidden';
     this.element.nativeElement.appendChild(this.caret);
 
-    window.onload = this.reposition.bind(this);
-    window.onresize = this.reposition.bind(this);
+    // Resize
+    this.resizeObserver = new ResizeObserver(() => {
+      this.reposition();
+    });
+    this.resizeObserver.observe(this.element.nativeElement);
+
     this.reposition();
 
     this.options = {
