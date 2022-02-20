@@ -18,7 +18,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
   public canvas: HTMLCanvasElement;
   public inputElement: HTMLElement;
   public field: DOMRect;
-  public caret;
+  public caret: HTMLSpanElement;
 
   private particles: Array<Particle> = [];
   private destroyed: Array<Particle> = [];
@@ -42,9 +42,9 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
     this.inputElement = this.element.nativeElement;
     this.caret = document.createElement('span');
     this.caret.style.position = 'absolute';
-    this.caret.style.left = 0;
-    this.caret.style.top = 0;
-    this.caret.style.margin = 0;
+    this.caret.style.left = '0';
+    this.caret.style.top = '0';
+    this.caret.style.margin = '0';
     this.caret.style.width = 'auto';
     this.caret.style.visibility = 'hidden';
     this.element.nativeElement.appendChild(this.caret);
