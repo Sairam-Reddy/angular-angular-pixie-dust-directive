@@ -9,7 +9,7 @@ import { Particle } from './models/particle.model';
 import { Vector } from './models/vector.model';
 
 @Directive({
-  selector: '[appPixieDust]',
+  selector: '[appPixieDust]'
 })
 export class PixieDustDirective implements OnChanges, AfterViewInit {
   // input to the directive
