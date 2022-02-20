@@ -31,7 +31,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
 
   public ngOnChanges(): void {
     // start listening to events
-    if (!this.options) {
+    if (this.options) {
       var self = this;
       document.addEventListener('keyup', (e) => {
         this.options.action(self, e);
