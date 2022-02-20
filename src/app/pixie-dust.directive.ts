@@ -56,7 +56,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
     // Resize
     this.resizeObserver = new ResizeObserver(() => {
       this.reposition();
-      // correct canvas size on window resize
+      // correct canvas size on element resize
       if (this.canvas) {
         this.fitCanvas();
       }
