@@ -668,8 +668,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
   }
 
   private spray(amount, config) {
-    var i = 0;
-    for (; i < amount; i++) {
+    for (let i = 0; i < amount; i++) {
       const agrs = config();
       this.add(agrs[0], agrs[1], agrs[2], agrs[3], agrs[4], agrs[5], agrs[6]);
     }
