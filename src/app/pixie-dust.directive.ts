@@ -16,7 +16,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
 
   public MAX_LIFE = 50;
   public canvas;
-  public input;
+  public inputElement;
   public field;
   public caret;
 
@@ -39,7 +39,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
   }
 
   public ngAfterViewInit(): void {
-    this.input = this.element.nativeElement;
+    this.inputElement = this.element.nativeElement;
     this.caret = document.createElement('span');
     this.caret.style.position = 'absolute';
     this.caret.style.left = 0;
@@ -96,13 +96,11 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
         // nothing
       },
       action: () => {
-        this.caret.textContent = this.input.value;
-
         this.burst(12);
 
-        this.input.classList.add('keyup');
+        this.inputElement.classList.add('keyup');
         setTimeout(() => {
-          this.input.classList.remove('keyup');
+          this.inputElement.classList.remove('keyup');
         }, 100);
       },
     };
@@ -111,7 +109,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
   }
 
   public reposition() {
-    this.field = this.input.getBoundingClientRect();
+    this.field = this.inputElement.getBoundingClientRect();
   }
 
   private getRandomBetween(min, max) {
