@@ -14,12 +14,12 @@ export class Particle {
   private _behavior;
 
   public constructor(
-    id = 'default',
-    group = 'default',
+    id: string = 'default',
+    group: string = 'default',
     position: Vector = new Vector(),
     velocity: Vector = new Vector(),
-    size = 1,
-    life = 0,
+    size: number = 1,
+    life: number = 0,
     behavior = []
   ) {
     this._id = id;
@@ -33,19 +33,19 @@ export class Particle {
     this._behavior = behavior;
   }
 
-  public get id() {
+  public get id(): string {
     return this._id;
   }
 
-  public get group() {
+  public get group(): string {
     return this._group;
   }
 
-  public get life() {
+  public get life(): number {
     return this._life;
   }
 
-  public get size() {
+  public get size(): number {
     return this._size;
   }
 
@@ -53,26 +53,26 @@ export class Particle {
     this._size = size;
   }
 
-  public get position() {
+  public get position(): Vector {
     return this._position;
   }
 
-  public get velocity() {
+  public get velocity(): Vector {
     return this._velocity;
   }
 
   public update(stage) {
     this._life++;
 
-    var i = 0;
-    var l = this._behavior.length;
+    let i = 0;
+    const l = this._behavior.length;
 
     for (; i < l; i++) {
       this._behavior[i].call(stage, this);
     }
   }
 
-  public toString() {
+  public toString(): string {
     return (
       'Particle(' +
       this._id +
