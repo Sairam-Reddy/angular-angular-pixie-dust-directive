@@ -14,20 +14,20 @@ export class Vector {
     this._y = y;
   }
 
-  public static create(x: number, y: number) {
+  public static create(x: number, y: number): Vector {
     return new Vector(x, y);
   }
 
-  public static add(a, b) {
+  public static add(a: Vector, b: Vector): Vector {
     return new Vector(a.x + b.x, a.y + b.y);
   }
 
-  public static subtract(a, b) {
+  public static subtract(a: Vector, b: Vector): Vector {
     return new Vector(a.x - b.x, a.y - b.y);
   }
 
-  public static random(range) {
-    var v = new Vector();
+  public static random(range): Vector {
+    const v: Vector = new Vector();
     v.randomize(range);
     return v;
   }
@@ -110,8 +110,7 @@ export class Vector {
     }
   }
 
-  public randomize(amount) {
-    amount = amount || 1;
+  public randomize(amount = 1) {
     this._x = amount * 2 * (-0.5 + Math.random());
     this._y = amount * 2 * (-0.5 + Math.random());
   }
