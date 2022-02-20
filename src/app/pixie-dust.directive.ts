@@ -25,10 +25,19 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
   private paint: any;
   private update: any;
   private stage: any = () => {};
+  private options;
 
   public constructor(private element: ElementRef) {}
 
-  public ngOnChanges(): void {}
+  public ngOnChanges(): void {
+    // start listening to events
+    if (!this.options) {
+      var self = this;
+      document.addEventListener('keyup', (e) => {
+        this.options.action(self, e);
+      });
+    }
+  }
 
   public ngAfterViewInit(): void {
     this.input = this.element.nativeElement;
@@ -44,6 +53,64 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
     window.onload = this.reposition.bind(this);
     window.onresize = this.reposition.bind(this);
     this.reposition();
+
+    this.options = {
+      init: () => {},
+      tick: (particles) => {
+        if (!particles) {
+          return;
+        }
+
+        particles.forEach((p) => {
+          if (p.life > this.MAX_LIFE) {
+            this.destroy(p);
+          }
+        });
+      },
+      beforePaint: () => {
+        this.clear();
+      },
+      paint: (particle) => {
+        const p = particle.position;
+        const s = particle.size;
+        const o = 1 - particle.life / this.MAX_LIFE;
+
+        this.paint.circle(p.x, p.y, s, 'rgba(255,255,255,' + o + ')');
+        this.paint.circle(
+          p.x,
+          p.y,
+          s + 1.5,
+          'rgba(231,244,255,' + o * 0.25 + ')'
+        );
+
+        // extra
+        const w = 2;
+        const wh = w * 0.5;
+        const h = 35;
+        const hh = h * 0.5;
+        this.context.rect(p.x - wh, p.y - hh, w, h);
+        this.context.fillStyle = 'rgba(231,244,255,' + o * 0.025 + ')';
+        this.context.fill();
+        this.context.closePath();
+      },
+      afterPaint: () => {
+        // nothing
+      },
+      action: (e) => {
+        if (!this.spawnsCharacter(e.keyCode)) {
+          return;
+        }
+
+        this.caret.textContent = this.input.value;
+
+        this.burst(12);
+
+        this.input.classList.add('keyup');
+        setTimeout(() => {
+          this.input.classList.remove('keyup');
+        }, 100);
+      },
+    };
 
     this.startSimulation();
   }
@@ -162,63 +229,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
 
   private startSimulation() {
     // start particle simulation
-    this.simulate('2d', {
-      init: () => {},
-      tick: (particles) => {
-        if (!particles) {
-          return;
-        }
-
-        particles.forEach((p) => {
-          if (p.life > this.MAX_LIFE) {
-            this.destroy(p);
-          }
-        });
-      },
-      beforePaint: () => {
-        this.clear();
-      },
-      paint: (particle) => {
-        const p = particle.position;
-        const s = particle.size;
-        const o = 1 - particle.life / this.MAX_LIFE;
-
-        this.paint.circle(p.x, p.y, s, 'rgba(255,255,255,' + o + ')');
-        this.paint.circle(
-          p.x,
-          p.y,
-          s + 1.5,
-          'rgba(231,244,255,' + o * 0.25 + ')'
-        );
-
-        // extra
-        const w = 2;
-        const wh = w * 0.5;
-        const h = 35;
-        const hh = h * 0.5;
-        this.context.rect(p.x - wh, p.y - hh, w, h);
-        this.context.fillStyle = 'rgba(231,244,255,' + o * 0.025 + ')';
-        this.context.fill();
-        this.context.closePath();
-      },
-      afterPaint: () => {
-        // nothing
-      },
-      action: (e) => {
-        if (!this.spawnsCharacter(e.keyCode)) {
-          return;
-        }
-
-        this.caret.textContent = this.input.value;
-
-        this.burst(12);
-
-        this.input.classList.add('keyup');
-        setTimeout(() => {
-          this.input.classList.remove('keyup');
-        }, 100);
-      },
-    });
+    this.simulate('2d', this.options);
   }
 
   // setup DOM
@@ -614,12 +625,6 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
 
     // start ticking
     this.tick(options);
-
-    // start listening to events
-    var self = this;
-    document.addEventListener('keyup', (e) => {
-      options.action(self, e);
-    });
   }
 
   // simulation update loop
