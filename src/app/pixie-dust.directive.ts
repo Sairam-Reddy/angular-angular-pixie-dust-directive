@@ -135,7 +135,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
       this.behavior.move(),
     ];
 
-    let size = 1.25;
+    let size = 2.25;
     let force = 0.7;
     var lifeMin = 0;
     let progress =
