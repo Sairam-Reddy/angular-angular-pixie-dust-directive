@@ -168,7 +168,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
           null,
           Vector.create(
             this.getRandomBetween(offsetrangeMin + 10, offsetrangeMax - 20),
-            this.getRandomBetween(this.field.top + 15, this.field.bottom - 15)
+            this.field.height / 2
           ),
           Vector.random(force),
           size + Math.random(),

@@ -1,5 +1,12 @@
+:host {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
 .placeholder {
-  display: inline-block;
+  display: flex;
+  position: relative;
   background-color: black;
   color: white;
   padding: 5px;
