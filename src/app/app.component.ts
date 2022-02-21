@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  public counter: number = 10000000000000;
+  public counter: number = 1000;
 
   public increment(): void {
     this.counter = this.counter + 100;
