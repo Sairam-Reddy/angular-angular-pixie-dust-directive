@@ -149,27 +149,20 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
     const lifeMin = 0;
     const progress =
       Math.min(this.field.width, this.caret.offsetWidth) / this.field.width;
-    const offset = this.field.left + this.field.width * progress;
-    const rangeMin = Math.max(this.field.left, offset - 30);
-    const rangeMax = Math.min(this.field.right, offset + 10);
+    const offset = this.field.width * progress;
 
     const sprayCount: number = Math.ceil(
       this.field.width / Math.min(this.field.width, this.caret.offsetWidth)
     );
 
     for (let i = 0; i <= sprayCount; i++) {
-      const offsetPart = this.field.left + this.field.width * progress * i;
-      const offsetrangeMin = Math.max(this.field.left, offsetPart - 30);
-      const offsetrangeMax = Math.min(this.field.right, offsetPart + 10);
+      const offsetPart = this.field.width * progress * i;
 
       this.spray(intensity, () => {
         return [
           null,
           null,
-          Vector.create(
-            this.getRandomBetween(offsetrangeMin + 10, offsetrangeMax - 20),
-            this.field.height / 2
-          ),
+          Vector.create(offsetPart, this.field.height / 2),
           Vector.random(force),
           size + Math.random(),
           this.getRandomBetween(lifeMin, 0),
@@ -183,7 +176,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
       return [
         null,
         null,
-        Vector.create(this.getRandomBetween(rangeMin, rangeMax), 0),
+        Vector.create(0, 0),
         Vector.random(force),
         size + Math.random(),
         this.getRandomBetween(lifeMin, 0),
@@ -196,10 +189,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
       return [
         null,
         null,
-        Vector.create(
-          this.getRandomBetween(rangeMin, rangeMax),
-          this.field.height
-        ),
+        Vector.create(0, this.field.height),
         Vector.random(force),
         size + Math.random(),
         this.getRandomBetween(lifeMin, 0),
@@ -207,23 +197,57 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
       ];
     });
 
-    // right edge
-    if (rangeMax === this.field.right) {
-      this.spray(intensity * 2, () => {
-        return [
-          null,
-          null,
-          Vector.create(
-            this.field.right,
-            this.getRandomBetween(this.field.top, this.field.bottom)
-          ),
-          Vector.random(force),
-          size + Math.random(),
-          this.getRandomBetween(lifeMin, 0),
-          behavior,
-        ];
-      });
-    }
+    // middle up
+    this.spray(intensity * 2, () => {
+      return [
+        null,
+        null,
+        Vector.create(this.field.width / 2, 0),
+        Vector.random(force),
+        size + Math.random(),
+        this.getRandomBetween(lifeMin, 0),
+        behavior,
+      ];
+    });
+
+    // middle down
+    this.spray(intensity * 2, () => {
+      return [
+        null,
+        null,
+        Vector.create(this.field.width / 2, this.field.height),
+        Vector.random(force),
+        size + Math.random(),
+        this.getRandomBetween(lifeMin, 0),
+        behavior,
+      ];
+    });
+
+    // left down
+    this.spray(intensity * 2, () => {
+      return [
+        null,
+        null,
+        Vector.create(this.field.width, 0),
+        Vector.random(force),
+        size + Math.random(),
+        this.getRandomBetween(lifeMin, 0),
+        behavior,
+      ];
+    });
+
+    // right down
+    this.spray(intensity * 2, () => {
+      return [
+        null,
+        null,
+        Vector.create(this.field.width, this.field.height),
+        Vector.random(force),
+        size + Math.random(),
+        this.getRandomBetween(lifeMin, 0),
+        behavior,
+      ];
+    });
   }
 
   private startSimulation() {
