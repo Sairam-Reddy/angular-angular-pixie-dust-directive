@@ -139,13 +139,13 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
 
   private burst(intensity) {
     let behavior = [
-      this.behavior.force(-0.015, -0.015),
+      this.behavior.force(-0.005, -0.005),
       this.behavior.cohesion(50),
       this.behavior.move(),
     ];
 
     const size = 5.25;
-    const force = 0.7;
+    const force = 0.2;
     const lifeMin = 0;
     const progress =
       Math.min(this.field.width, this.caret.offsetWidth) / this.field.width;
@@ -346,7 +346,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
     };
 
     this.behavior = {
-      cohesion: (range = 100, speed = 0.001) => {
+      cohesion: (range = 100, speed = 0.00025) => {
         range = Math.pow(range, 2);
 
         return (particle) => {
