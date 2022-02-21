@@ -145,7 +145,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
     ];
 
     const size = 5.25;
-    const force = 0.2;
+    const force = -0.2;
     const lifeMin = 0;
     const progress =
       Math.min(this.field.width, this.caret.offsetWidth) / this.field.width;
@@ -163,7 +163,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
           null,
           null,
           Vector.create(offsetPart, this.field.height / 2),
-          Vector.random(force),
+          Vector.create(0, -0.5),
           size + Math.random(),
           this.getRandomBetween(lifeMin, 0),
           behavior,
@@ -177,7 +177,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
         null,
         null,
         Vector.create(0, 0),
-        Vector.random(force),
+        Vector.create(0, -0.5),
         size + Math.random(),
         this.getRandomBetween(lifeMin, 0),
         behavior,
@@ -190,7 +190,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
         null,
         null,
         Vector.create(0, this.field.height),
-        Vector.random(force),
+        Vector.create(0, -0.5),
         size + Math.random(),
         this.getRandomBetween(lifeMin, 0),
         behavior,
@@ -203,7 +203,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
         null,
         null,
         Vector.create(this.field.width / 2, 0),
-        Vector.random(force),
+        Vector.create(0, -0.5),
         size + Math.random(),
         this.getRandomBetween(lifeMin, 0),
         behavior,
@@ -216,7 +216,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
         null,
         null,
         Vector.create(this.field.width / 2, this.field.height),
-        Vector.random(force),
+        Vector.create(0, -0.5),
         size + Math.random(),
         this.getRandomBetween(lifeMin, 0),
         behavior,
@@ -229,7 +229,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
         null,
         null,
         Vector.create(this.field.width, 0),
-        Vector.random(force),
+        Vector.create(0, -0.5),
         size + Math.random(),
         this.getRandomBetween(lifeMin, 0),
         behavior,
@@ -242,7 +242,7 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
         null,
         null,
         Vector.create(this.field.width, this.field.height),
-        Vector.random(force),
+        Vector.create(0, -0.5),
         size + Math.random(),
         this.getRandomBetween(lifeMin, 0),
         behavior,
@@ -312,8 +312,10 @@ export class PixieDustDirective implements OnChanges, AfterViewInit {
     this.canvas.style.position = 'absolute';
     this.canvas.style.left = '0';
     this.canvas.style.right = '0';
-    this.canvas.style.top = '0';
+    // this.canvas.style.top = '0';
     this.canvas.style.bottom = '0';
+    this.canvas.style.width = '100%';
+    this.canvas.style.height = '150%';
     this.canvas.style.pointerEvents = 'none';
 
     this.element.nativeElement.appendChild(this.canvas);
